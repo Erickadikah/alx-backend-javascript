@@ -3,7 +3,8 @@ class Currency {
     this._code = code;
     this._name = name;
   }
-  //getters and setters
+
+  // getters and setters
   set code(code = '') {
     this._code = code;
   }
