@@ -18,11 +18,8 @@ class Car {
   }
 
   cloneCar() {
-    const newCar = new Car();
-    newCar._brand = this._brand;
-    newCar._motor = this._motor;
-    newCar._color = this._color;
-    return newCar;
+    const newCar = this.constructor || [Symbol.species];
+    return new newCar;
   }
 }
 
