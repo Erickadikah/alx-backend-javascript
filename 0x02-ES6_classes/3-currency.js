@@ -4,7 +4,6 @@ class Currency {
     this._name = name;
   }
 
-  // getters and setters
   set code(code = '') {
     this._code = code;
   }
@@ -21,7 +20,7 @@ class Currency {
     return this._name;
   }
 
-  displayFullPrice() {
+  displayFullCurrency() {
     return `${this._name} (${this._code})`;
   }
 }
