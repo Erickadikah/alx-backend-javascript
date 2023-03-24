@@ -5,7 +5,7 @@ export default function quadrial(mathFunction) {
   } catch (error) {
     queue.push(String(error));
   } finally {
-    queue.push('Guardrial was processed');
+    queue.push('Guardrail was processed');
   }
   return queue;
 }
