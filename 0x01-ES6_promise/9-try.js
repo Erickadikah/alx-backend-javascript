@@ -1,9 +1,9 @@
 export default function quadrial(mathFunction) {
   const queue = [];
   try {
-    queue.push(mathFunction());
+    queue.push(mathFunction());// appending the error to the queue
   } catch (error) {
-    queue.push(`Error: ${error.message}`);
+    queue.push(String(error));
   } finally {
     queue.push('Guardrial was processed');
   }
