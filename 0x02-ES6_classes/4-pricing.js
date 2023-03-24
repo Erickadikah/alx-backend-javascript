@@ -6,7 +6,7 @@ class Pricing {
     this._currency = currency;
   }
 
-  set amount(amount = 0) {
+  set amount(amount) {
     this._amount = amount;
   }
 
@@ -14,7 +14,7 @@ class Pricing {
     return this._amount;
   }
 
-  set currency(currency = '') {
+  set currency(currency) {
     this._currency = currency;
   }
 
@@ -23,7 +23,7 @@ class Pricing {
   }
 
   displayFullPrice() {
-    return `${this._amount} ${this.currency.displayFullPrice()}`;
+    return `${this._amount} ${this.currency.name} (${this.currency.code})`;
   }
 
   static convertPrice(amount, conversionRate) {
