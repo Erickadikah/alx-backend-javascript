@@ -1,10 +1,10 @@
 export default function createIteratorObject(report) {
-	const employees = report.allEmployees;
-	const name_list = [];
-	for(const names in employees) {
-		if(names) {
-			name_list.push(...employees[names]);
-		}
-	}
-	return name_list
+  const employees = report.allEmployees;
+  const Listname = [];
+  for (const names in employees) {
+    if (names) {
+      Listname.push(...employees[names]);
+    }
+  }
+  return Listname;
 }
