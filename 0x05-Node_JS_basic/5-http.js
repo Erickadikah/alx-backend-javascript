@@ -8,7 +8,8 @@ const server = http.createServer((req, res) => {
   if (req.url === '/') {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello Holberton School!');
+    res.write('Hello Holberton School!');
+    res.end();
   } else if (req.url === '/students') {
     fs.readFile('database.csv', 'utf-8', (err, data) => {
       if (err) {
@@ -18,21 +19,20 @@ const server = http.createServer((req, res) => {
         res.end('Internal Server Error');
         return;
       }
-      console.log('This is the list of our students');
+      // console.log('This is the list of our students');
       const lines = data.split('\n').filter((line) => line.trim().length > 0);
-      console.log(`Number of students: ${lines.length - 1}`);
+      // console.log(`Number of students: ${lines.length - 1}`);
 
       const csStudents = lines.filter((line) => line.endsWith('CS'));
       const csFirstNames = csStudents.map((student) => student.split(',')[0].trim());
-      console.log(`Number of students in CS: ${csStudents.length}. List: ${csFirstNames.join(', ')}`);
-      const csResponse = `Number of students in CS: ${csStudents.length}. List: ${csFirstNames.join(', ')}`;
 
       const sweStudents = lines.filter((line) => line.endsWith('SWE'));
       const sweFirstNames = sweStudents.map((student) => student.split(',')[0].trim());
-      console.log(`Number of students in SWE: ${sweStudents.length}. List: ${sweFirstNames.join(', ')}`);
-      const sweResponse = `Number of students in SWE: ${sweStudents.length}. List: ${sweFirstNames.join(', ')}`;
 
-      const response = `${csResponse}\n${sweResponse}`;
+      const response = 'This is the list of our students\n'
+        + `Number of students: ${lines.length - 1}\n`
+        + `Number of students in CS: ${csStudents.length}. List: ${csFirstNames.join(', ')}\n`
+        + `Number of students in SWE: ${sweStudents.length}. List: ${sweFirstNames.join(', ')}`;
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/plain');
       res.end(response);
