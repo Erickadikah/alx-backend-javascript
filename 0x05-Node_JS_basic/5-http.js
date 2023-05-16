@@ -35,14 +35,12 @@ const server = http.createServer((req, res) => {
       const response = `${csResponse}\n${sweResponse}`;
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/plain');
-      res.end(response)
-
+      res.end(response);
     });
-    } else{
-      res.statusCode = 404;
-      res.setHeader('Content-Type', 'text/plain');
-      res.end('Not Found')
-      
+  } else {
+    res.statusCode = 404;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Not Found');
   }
 });
 
