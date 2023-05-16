@@ -1,6 +1,6 @@
-//Basic Node execution
-function displayMessage (message) {
-  console.log(message)
+// Basic Node execution
+function displayMessage(message) {
+  console.log(message);
 }
 
 module.exports = displayMessage;
