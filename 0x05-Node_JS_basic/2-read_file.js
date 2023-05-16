@@ -21,8 +21,11 @@ function countStudents(filepath) {
     });
     console.log(`Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.join(', ')}`);
 
+    if (!data) {
+      console.log('Cannot load the database');
+    }
   } catch (error) {
-    console.log('Cannot load the database');
+    console.log(error);
   }
 }
 
