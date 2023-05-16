@@ -19,36 +19,30 @@ const server = http.createServer((req, res) => {
         return;
       }
       console.log('This is the list of our students');
-      const lines = data.split('\n');
-      const students = lines.length - 1;
-      console.log(`Number of students: ${students}`);
+      const lines = data.split('\n').filter((line) => line.trim().length > 0);
+      console.log(`Number of students: ${lines.length - 1}`);
 
       const csStudents = lines.filter((line) => line.endsWith('CS'));
-      csStudents.forEach((student, index) => {
-        csStudents[index] = student.split(',')[0].trim();
-      });
-      console.log(`Number of students in CS: ${csStudents.length}. List: ${csStudents.join(', ')}`);
+      const csFirstNames = csStudents.map((student) => student.split(',')[0].trim());
+      console.log(`Number of students in CS: ${csStudents.length}. List: ${csFirstNames.join(', ')}`);
+      const csResponse = `Number of students in CS: ${csStudents.length}. List: ${csFirstNames.join(', ')}`;
 
       const sweStudents = lines.filter((line) => line.endsWith('SWE'));
-      sweStudents.forEach((student, index) => {
-        sweStudents[index] = student.split(',')[0].trim();
-      });
-      console.log(`Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.join(', ')}`);
+      const sweFirstNames = sweStudents.map((student) => student.split(',')[0].trim());
+      console.log(`Number of students in SWE: ${sweStudents.length}. List: ${sweFirstNames.join(', ')}`);
+      const sweResponse = `Number of students in SWE: ${sweStudents.length}. List: ${sweFirstNames.join(', ')}`;
 
-      const responseBody = `
-        Number of students: ${students}
-        Number of students in CS: ${csStudents.length}. List: ${csStudents.join(', ')}
-        Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.join(', ')}
-      `;
-
+      const response = `${csResponse}\n${sweResponse}`;
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/plain');
-      res.end(responseBody);
+      res.end(response)
+
     });
-  } else {
-    res.statusCode = 404;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Not Found');
+    } else{
+      res.statusCode = 404;
+      res.setHeader('Content-Type', 'text/plain');
+      res.end('Not Found')
+      
   }
 });
 
