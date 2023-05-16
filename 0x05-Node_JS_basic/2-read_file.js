@@ -5,24 +5,16 @@ function countStudents(filepath) {
     // read data
     const data = fs.readFileSync(filepath, 'utf-8');
     // console.log(data)
-    const numStd = data.split('\n');
-    const stdNum = numStd.length - 1;
+    const lines = data.split('\n').filter((line) => line.trim().length > 0);
+    console.log(`Number of students: ${lines.length - 1}`);
 
-    console.log(`Number of students: ${stdNum}`);
+    const csStudents = lines.filter((line) => line.endsWith('CS'));
+    const csFirstNames = csStudents.map((student) => student.split(',')[0].trim());
+    console.log(`Number of students in CS: ${csStudents.length}. List: ${csFirstNames.join(', ')}`);
 
-    const csStudents = numStd.filter((numStds) => numStds.endsWith('CS'));
-    // console.log(typeof(num_std[1])
-    // console.log(typeof(csStudents))
-    csStudents.forEach((student, index) => {
-      csStudents[index] = student.split(',')[0].trim();
-    });
-    console.log(`Number of students in CS: ${csStudents.length}. List: ${csStudents.join(', ')}`);
-
-    const sweStudents = numStd.filter((numStds) => numStds.endsWith('SWE'));
-    sweStudents.forEach((student, index) => {
-      sweStudents[index] = student.split(',')[0].trim();
-    });
-    console.log(`Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.join(', ')}`);
+    const sweStudents = lines.filter((line) => line.endsWith('SWE'));
+    const sweFirstNames = sweStudents.map((student) => student.split(',')[0].trim());
+    console.log(`Number of students in SWE: ${sweStudents.length}. List: ${sweFirstNames.join(', ')}`);
   } catch (error) {
     throw Error('Cannot load the database');
   }
