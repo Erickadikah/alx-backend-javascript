@@ -9,7 +9,7 @@ async function countStudents(filepath) {
     }
     // console.log(data) debug getting binary =>  changed to('utf8')
     const lines = data.split('\n').filter((line) => line.trim().length > 0);
-    console.log(`Number of students: ${lines.length}`);
+    console.log(`Number of students: ${lines.length - 1}`);
 
     const csStudents = lines.filter((line) => line.endsWith('CS'));
     const csFirstNames = csStudents.map((student) => student.split(',')[0].trim());
