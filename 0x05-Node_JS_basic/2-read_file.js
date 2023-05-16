@@ -20,12 +20,8 @@ function countStudents(filepath) {
       sweStudents[index] = student.split(',')[0].trim();
     });
     console.log(`Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.join(', ')}`);
-
-    if (!data) {
-      console.log('Cannot load the database');
-    }
   } catch (error) {
-    console.log(error);
+    throw Error('Cannot load the database');
   }
 }
 
