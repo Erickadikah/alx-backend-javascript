@@ -1,23 +1,31 @@
+const fs = require('fs');
+
 function countStudents(filepath) {
-  const fs = require('fs');
   try {
     const data = fs.readFileSync(filepath, 'utf8');
-    //get the number of students
-    //get the number of students in CS
-    //get the number of students in SWE
-    //filter the first names in both CS and SWE
-    const lines = data.split('\n').filter((line) => line.trim().length > 0);
-    console.log(`Number of students: ${lines.length}`);
+    // console.log(data)
+    const numStd = (data).split('\n');
+    const stdNum = numStd.length - 1;
+    console.log(`Number of students: ${stdNum}`);
+    const csStudents = numStd.filter((numStds) => numStds.endsWith('CS'));
+    // console.log(typeof(num_std[1])
+    // console.log(typeof(csStudents))
+    csStudents.forEach((student, index) => {
+      csStudents[index] = student.split(',')[0].trim();
+    });
+    // console.log(csStudents.length)
+    console.log(`Number of students in CS: ${csStudents.length}. List: ${csStudents.join(', ')}`);
+    const sweStudents = numStd.filter((numStds) => numStds.endsWith('SWE'));
+    sweStudents.forEach((student, index) => {
+      sweStudents[index] = student.split(',')[0].trim();
+    });
+    console.log(`Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.join(', ')}`);
 
-    const csStudents = lines.filter((line) => line.endsWith('CS'));
-    const csFirstNames = csStudents.map((student) => student.split(',')[0].trim());
-    console.log(`Number of students in CS: ${csStudents.length}. List: ${csFirstNames.join(', ')}`);
-
-    const sweStudents = lines.filter((line) => line.endsWith('SWE'));
-    const sweFirstNames = sweStudents.map((student) => student.split(',')[0].trim());
-    console.log(`Number of students in SWE: ${sweStudents.length}. List: ${sweFirstNames.join(', ')}`);
-  } catch (err) {
-    console.log('Cannot load the database');
+    if (!data) {
+      console.log('Cannot load the database');
+    }
+  } catch (error) {
+    console.log(error);
   }
 }
 
