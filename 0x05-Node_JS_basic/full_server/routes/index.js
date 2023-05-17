@@ -7,11 +7,8 @@ const app = express();
 // Define routes
 app.get('/', AppController.getHomepage);
 
-
-app.get('/students',StudentsController.getAllStudents);
-
+app.get('/students', StudentsController.getAllStudents);
 
 app.get('/students/:major', StudentsController.getAllStudentsByMajor);
-
 
 module.exports = app;

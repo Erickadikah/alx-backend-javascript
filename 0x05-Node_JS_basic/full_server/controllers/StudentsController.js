@@ -23,7 +23,7 @@ class StudentsController {
         const csFirstNames = csStudents.map((student) => student.split(',')[0].trim());
         const sweStudents = lines.filter((line) => line.endsWith('SWE'));
         const sweFirstNames = sweStudents.map((student) => student.split(',')[0].trim());
-        const response = `This is the list of our students\n`
+        const response = 'This is the list of our students\n'
           + `Number of students in CS: ${csStudents.length}. List: ${csFirstNames.join(', ')}\n`
           + `Number of students in SWE: ${sweStudents.length}. List: ${sweFirstNames.join(', ')}`;
 
@@ -41,40 +41,39 @@ class StudentsController {
 
   static getAllStudentsByMajor(req, res) {
     const filepath = '../database.csv';
-    const major = req.params.major;
+    const { major } = req.params;
     readDatabase(filepath)
       .then((data) => {
-        if(!data) {
-            res.statusCode = 500;
-            res.send('Cannot load the database');
-            return;
+        if (!data) {
+          res.statusCode = 500;
+          res.send('Cannot load the database');
+          return;
         }
 
-    if (major === 'CS') {
-    // Filter students by major "CS"
-    const lines = data.split('\n').filter((line) => line.trim().length > 0);
-    const csStudents = lines.filter((line) => line.endsWith('CS'));
-    const csFirstNames = csStudents.map((student) => student.split(',')[0].trim());
-    const response = `${major}${csFirstNames.join(', ')}`;
-        res.send(response)
-    } else if (major === 'SWE') {
-    // Filter students by major "SWE"
-    const lines = data.split('\n').filter((line) => line.trim().length > 0);
-    const sweStudents = lines.filter((line) => line.endsWith('SWE'));
-    const sweFirstNames = sweStudents.map((student) => student.split(',')[0].trim());
-    const response = `${major} ${sweFirstNames.join(', ')}`;
-        res.send(response)
-    } else {
-        res.statusCode = 500;
-        res.send('Major parameter must be CS or SWE');
-        return;
-
-    };
+        if (major === 'CS') {
+          // Filter students by major "CS"
+          const lines = data.split('\n').filter((line) => line.trim().length > 0);
+          const csStudents = lines.filter((line) => line.endsWith('CS'));
+          const csFirstNames = csStudents.map((student) => student.split(',')[0].trim());
+          const response = `${major}${csFirstNames.join(', ')}`;
+          res.send(response);
+        } else if (major === 'SWE') {
+          // Filter students by major "SWE"
+          const lines = data.split('\n').filter((line) => line.trim().length > 0);
+          const sweStudents = lines.filter((line) => line.endsWith('SWE'));
+          const sweFirstNames = sweStudents.map((student) => student.split(',')[0].trim());
+          const response = `${major} ${sweFirstNames.join(', ')}`;
+          res.send(response);
+        } else {
+          res.statusCode = 500;
+          res.send('Major parameter must be CS or SWE');
+          return;
+        }
 
         // Send the response
         res.statusCode = 200;
         res.setHeader('content-Type', 'text/plain');
-        res.send(response);
+        // res.send(response);
       })
       .catch((error) => {
         console.log(error);

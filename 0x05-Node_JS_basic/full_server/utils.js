@@ -22,4 +22,4 @@ function readDatabase(filepath) {
       });
   });
 }
-module.exports = readDatabase
+module.exports = readDatabase;
