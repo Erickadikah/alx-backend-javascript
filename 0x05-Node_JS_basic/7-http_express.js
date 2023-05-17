@@ -30,7 +30,7 @@ app.get('/students', (req, res) => {
     const sweStudents = lines.filter((line) => line.endsWith('SWE'));
     const sweFirstNames = sweStudents.map((student) => student.split(',')[0].trim());
 
-    const response = `This is the list of our students \n Number of students: ${lines.length - 1}\n`
+    const response = `This is the list of our students \nNumber of students: ${lines.length - 1}\n`
         + `Number of students in CS: ${csStudents.length}. List: ${csFirstNames.join(', ')}\n`
         + `Number of students in SWE: ${sweStudents.length}. List: ${sweFirstNames.join(', ')}`;
     res.statusCode = 200;
