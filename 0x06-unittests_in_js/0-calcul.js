@@ -1,5 +1,5 @@
 function claculateNumber(a, b) {
-    return Math.round(a) + Math.round(b);
+    return (Math.round(a) + Math.round(b));
 
 }
 
