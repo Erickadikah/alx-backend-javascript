@@ -2,7 +2,6 @@ const sinon = require("sinon");
 const Utils = require('./utils');
 const chai = require('chai');
 const sendPaymentRequestToApi = require('./3-payment');
-const claculateNumber = require("./2-calcul_chai");
 
 const calculateNumberSpy = sinon.spy(Utils, 'calculateNumber');
 
