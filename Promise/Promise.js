@@ -16,6 +16,6 @@ Promise.all([
     recordVideoThree
 ]).then((messages) => {
     console.log(messages)
-}).catch((massge) => {
-    console.log(messages)
+}).catch((error) => {
+    console.log(error)
 })
