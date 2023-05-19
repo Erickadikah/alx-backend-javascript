@@ -4,11 +4,8 @@ const port = 7865;
 const hostname = 'localhost'
 
 app.get('/', function (req, res) {
-    res.send('Welcome to the payment system');
-    // res.statusCode = 200;
-    // res.setHeader('Content-Type', 'text/plain');
-    // res.end('Internal Server Error');
-    
+  res.statusCode = 200;
+  res.send('Welcome to the payment system');
 });
 
 app.listen(port, hostname, () => {

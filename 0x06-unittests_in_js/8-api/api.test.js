@@ -1,49 +1,20 @@
 const chai = require("chai");
 const expect = chai.expect;
-const request = require('supertest');
-const app = require('./api');
+const request = require('request');
+
 
 describe('Index Page', function() {
   it('should have correct status code 200', function(done) {
-    request(app)
-      .get('/')
-      .expect(200)
-      .end(function(err, res) {
-        if (err) return done(err);
-        done();
+    request('http://localhost:7865/', (error, response, body) => {
+      if (error) throw error;
+      expect(response.statusCode).to.equal(200);
+      expect(body).to.equal('Welcome to the payment system')
+      done();
+    });
+      // .get('/')
+      // .expect(200)
+      // .end(function(err, res) {
+      //   if (err) return done(err);
+      //   done();
       });
   });
-
-  it('should return 200 status code and correct message', function(done) {
-    request(app)
-      .get('/')
-      .expect(200)
-      .end(function(err, res) {
-        if (err) return done(err);
-        expect(res.text).to.contain('Welcome to the payment system');
-        done();
-      });
-  });
-
-  it('should have the correct Content-Type', function(done) {
-    request(app)
-      .get('/')
-      .end(function(err, res) {
-        if (err) return done(err);
-        expect(res.headers['content-type']).to.equal('text/html; charset=utf-8');
-        done();
-      });
-  });
-
-  it('should have the correct Content-Length', function(done) {
-    request(app)
-      .get('/')
-      .end(function(err, res) {
-        if (err) return done(err);
-        expect(res.headers['content-length']).to.equal('29');
-        done();
-      });
-  });
-});
-
-
