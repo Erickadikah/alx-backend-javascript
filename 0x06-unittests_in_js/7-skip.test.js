@@ -10,7 +10,7 @@ describe('Testing numbers', () => {
   });
 
   it.skip('1 is equal to 3', () => {
-    //skip i is not equal to 3
+    //skip i is not equal tgit 
     expect(1 === 3).to.be.true;
   });
 

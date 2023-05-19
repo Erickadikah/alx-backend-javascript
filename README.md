@@ -11,3 +11,5 @@
 * [TypeScript Basics](./0x04-TypeScript_basic)
 
 * [Node JS Basics](./0x05-NodeJS_basic)
+
+* [Unittests in JS](./0x06-Unittests_in_JS)

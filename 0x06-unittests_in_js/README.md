@@ -24,7 +24,7 @@ Read or watch:
 
 * Write a test file with the following requirements:
 
-### [3. Spies](./3-calcul_chai.js)
+### [3. Spies](./3-payment.js)
 
 * Write a test file with the following requirements:
 
@@ -32,10 +32,23 @@ Read or watch:
 
 * Write a test file with the following requirements:
 
-### [5. Hooks](./5-payment.js)
+### [5. Hooks](./5-payment_token.test.js)
 
 * Write a test file with the following requirements:
 
-### [6. Async tests with done](./6-payment_token.js)
+### [6. Async tests with done](./6-payment_token.test.js)
 
 * Write a test file with the following requirements:
+
+## [7.Skip tests](./7-skip.test.js)
+
+## [8. Basic Integration testing](./8-api/api.js)
+in this task we will add a new route:
+used SuperTest to test the route mostly for Node.js HTTP servers
+```bash
+npm install supertest --save-dev
+```
+this was the test HTTP request:
+```bash
+const request = require('supertest');
+const app = require('./api');
