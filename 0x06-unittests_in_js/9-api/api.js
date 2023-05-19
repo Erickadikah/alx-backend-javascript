@@ -24,7 +24,7 @@ app.use(function (err, req, res, next) {
 });
 
 app.listen(port, hostname, () => {
-  console.log(`API available on ${hostname} port ${port}`);
+  console.log(`API available on ${hostname} ${port}`);
 });
 
 module.exports = app;
