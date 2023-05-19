@@ -8,7 +8,7 @@ describe('getPaymentTokenFromAPI', () => {
        expect(res).to.be.an.instanceof(Promise);
     });
     //returns true 
-    it('should return a json data object {data: "Successfull response from the API"}', () => {
+    it('should return a json data object data: "Successfull response from the API"', () => {
       getPaymentTokenFromAPI(true) 
       .then((res) => {
         expect(res.data).to.be.equal('Successful response from the API');
@@ -16,7 +16,7 @@ describe('getPaymentTokenFromAPI', () => {
       });
     });
     //test to make the  api doesnothing 
-    it('should do nothing when not success', () => {
+    it('should do nothing', () => {
     getPaymentTokenFromAPI(false)
     .then((res) => {
     expect(res).to.equal('');

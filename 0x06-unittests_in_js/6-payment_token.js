@@ -1,10 +1,8 @@
 function getPaymentTokenFromAPI(success) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         if (success) {
             // const data = 'Successfull response from the API'
-            resolve({ data: 'Successfull response from the API'});
-        // do nothing for the reject
-        //     reject(Error('Cannot process payment'));
+            resolve({ data: 'Successful response from the API'});
         }
         });
     };
