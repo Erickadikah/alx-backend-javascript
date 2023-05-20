@@ -64,20 +64,22 @@ describe('Cart Page', () => {
     });
   });
 describe('POST/Login', () => {
-    it('should have correct Status Code', () => {
-        request('http://localhost:7865/login', (error, res, body) => {
-        expect(res.statusCode).to.equal(200);
-        expect(body).to.equal('Welcome to the payment system')
-        req.post({
+    it('should have correct Status Code', (done) => {
+        // request('http://localhost:7865/login', (error, res, body) => {
+        // expect(res.statusCode).to.equal(200);
+        // expect(body).to.equal('Welcome to the payment system')
+        request.post({
             url: "http://localhost:7865/login",
             json: true,
             body: { 
-                userName: "Erick"
+                userName: "Betty"
             },
         },
         (error, response, body) => {
+        // checking the response body
         expect(response.statusCode).to.equal(200);
-        expect(body).to.equal('Welcome Erick');
+        expect(body).to.equal('Welcome Betty');
+        //End  test
         done();
         });
     });
@@ -97,7 +99,6 @@ describe("GET /available_payments", function () {
       }
     );
   });
-});
 });
 });
 
