@@ -1,6 +1,6 @@
 const http = require('http');
 const fs = require('fs');
-const stdin = process.stdin
+// const stdin = process.stdin
 
 const hostname = '127.0.0.1';
 const port = 1245;
@@ -9,11 +9,11 @@ const app = http.createServer((req, res) => {
   if (req.url === '/') {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
-    res.write('Hello Holberton School!');
+    res.end('Hello Holberton School!');
     res.end();
   } else if (req.url === '/students') {
-    const databaseFile = 'database.csv'
-    fs.readFile(stdin[1] || databaseFile, 'utf-8', (err, data) => {
+    const databaseFile = 'database.csv';
+    fs.readFile(databaseFile, 'utf-8', (err, data) => {
       if (err) {
         console.error('Error reading file:', err);
         res.statusCode = 500;
