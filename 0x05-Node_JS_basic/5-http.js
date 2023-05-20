@@ -13,14 +13,11 @@ const app = http.createServer((req, res) => {
   if (req.url === '/') {
     res.statusCode = 200;
     res.end('Hello Holberton School!');
-  }
-  if (req.url === '/students') {
+  } else {
+    if (req.url === '/students') {
     res.statusCode = 200;
-    // const data = fs.readFileSync(database);
-    // res.end(`This is the list of our students\n${data}`);
-    // const response = readFileSync(database);
-    // res.end(`This is the list of our students\n${response}`);
-    res.end(`${readFileSync(database)}`);
+    res.end(`This is the list of our students\n ${readFileSync(database)}`);
+  }
   }
 });
 app.listen(port, hostname, () => {
