@@ -18,7 +18,9 @@ const app = http.createServer((req, res) => {
     res.statusCode = 200;
     // const data = fs.readFileSync(database);
     // res.end(`This is the list of our students\n${data}`);
-    res.end(`This is the list of our students\n ${readFileSync(database)}`);
+    // const response = readFileSync(database);
+    // res.end(`This is the list of our students\n${response}`);
+    res.end(`${readFileSync(database)}`);
   }
 });
 app.listen(port, hostname, () => {
