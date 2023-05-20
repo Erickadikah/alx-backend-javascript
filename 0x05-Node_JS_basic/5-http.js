@@ -15,11 +15,19 @@ const app = http.createServer((req, res) => {
     res.end('Hello Holberton School!');
   } else {
     if (req.url === '/students') {
+    //message = readFileSync(database);
+    res.write('This is the list of our students\n');
     res.statusCode = 200;
-    res.end(`This is the list of our students\n ${readFileSync(database)}`);
-  }
+    //readFileSync(database);
+    //send message to client && data to client
+    res.end(readFileSync(database));
+    } else {
+      res.statusCode = 404;
+      res.end('This is not a valid URL');
+    }
   }
 });
+
 app.listen(port, hostname, () => {
   console.log(`server running at http://${hostname}:${port}/`);
 });
