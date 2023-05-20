@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 7865;
 const hostname = 'localhost'
+const bodyParser = require('body-parser');
 //route for getting the root of the API
 app.get('/', function (req, res) {
     res.send('Welcome to the payment system');
@@ -27,7 +28,8 @@ app.get('/available_payments', function (req, res) {
         }
     });
 });
-
+//receives the username as POST data in JSON format
+app.use(bodyParser.json());
 //Login Route
 app.post('/login', function (req, res) {
     res.end(`Welcome ${req.body.userName}`);
