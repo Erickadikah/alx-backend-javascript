@@ -52,3 +52,8 @@ this was the test HTTP request:
 ```bash
 const request = require('supertest');
 const app = require('./api');
+```
+
+## [9. Regex integration testing](./9-api/api.js)
+
+## [10.api.js](./10-api/api.js)
