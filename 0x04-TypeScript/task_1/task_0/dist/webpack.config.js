@@ -34,4 +34,3 @@ module.exports = {
         path: path.resolve(__dirname, "dist")
     }
 };
-//# sourceMappingURL=webpack.config.js.map
