@@ -17,6 +17,7 @@ const app = http.createServer((req, res) => {
     // message = readFileSync(database);
     res.write('This is the list of our students\n');
     res.statusCode = 200;
+    // message = fs
     // readFileSync(database);
     // send message to client && data to client
     res.end(readFileSync(database));
